@@ -70,10 +70,10 @@ class Game extends React.Component {
     towerPosition.map((t) => squares[t]='T');
 
     var loperPosition = Array(1, 6, 57, 62)
-    loperPosition.map((t) => squares[t]='L');
+    loperPosition.map((t) => squares[t]='H');
 
     var horsePosition = Array(2, 5, 58, 61)
-    horsePosition.map((t) => squares[t]='H');
+    horsePosition.map((t) => squares[t]='L');
 
     squares[3] = 'D';
     squares[60] = 'D';
