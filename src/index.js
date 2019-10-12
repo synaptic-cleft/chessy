@@ -85,22 +85,36 @@ class Game extends React.Component {
       history: [{ squares }],
       xIsNext: true,
       stepNumber: 0,
+      selectedPosition: null,
+      selectedFigure: null,
     }
   }
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1)
     const current = history[history.length - 1]
+
+    if (this.state.selectedFigure) {
     const squares = current.squares.slice();
     if (squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.selectedFigure;
+    squares[this.state.selectedPosition] = null;
     this.setState({
       history: history.concat([{ squares: squares, }]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
+      selectedPosition: null,
+      selectedFigure: null,
     });
+  } else {
+    this.setState({
+      selectedPosition: i,
+      selectedFigure: current.squares[i],
+    })
+  }
+
   }
 
   jumpTo(step) {
