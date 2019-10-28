@@ -18,12 +18,12 @@ class Board extends React.Component {
   }
 
   print8Squares(i) {
-    var arr = Array(i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7)
+    const arr = Array(i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7)
     return arr.map((x) => this.renderSquare(x))
   }
 
   printBoard() {
-    var arr = Array(0, 8, 16, 24, 32, 40, 48, 56);
+    const arr = Array(0, 8, 16, 24, 32, 40, 48, 56);
     return arr.map((x) => <div className="board-row">{this.print8Squares(x)}</div>);
   }
 
@@ -39,8 +39,8 @@ class Board extends React.Component {
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    var squares = Array(64).fill(null)
-    var boer;
+    const squares = Array(64).fill(null)
+    let boer;
     for (boer = 8; boer < 16; boer++) {
       squares[boer] = 'B';
     }
@@ -48,13 +48,13 @@ class Game extends React.Component {
       squares[boer] = 'B';
     }
 
-    var towerPosition = Array(0, 7, 56, 63)
+    const towerPosition = Array(0, 7, 56, 63)
     towerPosition.map((t) => squares[t] = 'T');
 
-    var loperPosition = Array(1, 6, 57, 62)
+    const loperPosition = Array(1, 6, 57, 62)
     loperPosition.map((t) => squares[t] = 'H');
 
-    var horsePosition = Array(2, 5, 58, 61)
+    const horsePosition = Array(2, 5, 58, 61)
     horsePosition.map((t) => squares[t] = 'L');
 
     squares[3] = 'D';
