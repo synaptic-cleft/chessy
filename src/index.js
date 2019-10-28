@@ -42,26 +42,35 @@ class Game extends React.Component {
     const squares = Array(64).fill(null)
     let boer;
     for (boer = 8; boer < 16; boer++) {
-      squares[boer] = 'B';
+      squares[boer] = './images/pawnBlack.png';
     }
     for (boer = 48; boer < 56; boer++) {
-      squares[boer] = 'B';
+      squares[boer] = './images/pawnWhite.png';
     }
 
-    const towerPosition = Array(0, 7, 56, 63)
-    towerPosition.map((t) => squares[t] = 'T');
+    const blackRookPosition = Array(0, 7)
+    blackRookPosition.map((t) => squares[t] = './images/rookBlack.png');
 
-    const loperPosition = Array(1, 6, 57, 62)
-    loperPosition.map((t) => squares[t] = 'H');
+    const whiteRookPosition = Array(56, 63)
+    whiteRookPosition.map((t) => squares[t] = './images/rookWhite.png');
 
-    const horsePosition = Array(2, 5, 58, 61)
-    horsePosition.map((t) => squares[t] = 'L');
+    const blackBishopPosition = Array(1, 6)
+    blackBishopPosition.map((t) => squares[t] = './images/bishopBlack.png');
 
-    squares[3] = 'D';
-    squares[60] = 'D';
+    const whiteBishopPosition = Array(57, 62)
+    whiteBishopPosition.map((t) => squares[t] = './images/bishopWhite.png');
 
-    squares[4] = './images/kingWhite.png';
-    squares[59] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chess_klt45.svg/1920px-Chess_klt45.svg.png';
+    const blackKnightPosition = Array(2, 5)
+    blackKnightPosition.map((t) => squares[t] = './images/knightBlack.png');
+
+    const whiteKnightPosition = Array(58, 61)
+    whiteKnightPosition.map((t) => squares[t] = './images/knightWhite.png');
+
+    squares[3] = './images/QueenBlack.png';
+    squares[60] = './images/QueenWhite.png';
+
+    squares[4] = './images/kingBlack.png';
+    squares[59] = './images/kingWhite.png';
 
     this.state = {
       history: [{ squares }],
