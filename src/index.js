@@ -40,37 +40,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     const squares = Array(64).fill(null)
-    let pawn;
-    for (pawn = 8; pawn < 16; pawn++) {
-      squares[pawn] = './images/pawnBlack.png';
-    }
-    for (pawn = 48; pawn < 56; pawn++) {
-      squares[pawn] = './images/pawnWhite.png';
-    }
-
-    const blackRookPosition = Array(0, 7)
-    blackRookPosition.map((t) => squares[t] = './images/rookBlack.png');
-
-    const whiteRookPosition = Array(56, 63)
-    whiteRookPosition.map((t) => squares[t] = './images/rookWhite.png');
-
-    const blackBishopPosition = Array(1, 6)
-    blackBishopPosition.map((t) => squares[t] = './images/bishopBlack.png');
-
-    const whiteBishopPosition = Array(57, 62)
-    whiteBishopPosition.map((t) => squares[t] = './images/bishopWhite.png');
-
-    const blackKnightPosition = Array(2, 5)
-    blackKnightPosition.map((t) => squares[t] = './images/knightBlack.png');
-
-    const whiteKnightPosition = Array(58, 61)
-    whiteKnightPosition.map((t) => squares[t] = './images/knightWhite.png');
-
-    squares[3] = './images/QueenBlack.png';
-    squares[60] = './images/QueenWhite.png';
-
-    squares[4] = './images/kingBlack.png';
-    squares[59] = './images/kingWhite.png';
 
     this.state = {
       history: [{ squares }],
@@ -79,6 +48,43 @@ class Game extends React.Component {
       selectedPosition: null,
       selectedFigure: null,
     }
+  }
+
+  componentDidMount() {
+    const squares = Array(64).fill(null);
+    let pawn;
+    for (pawn = 8; pawn < 16; pawn++) {
+      squares[pawn] = './images/pawnBlack.png';
+    }
+    for (pawn = 48; pawn < 56; pawn++) {
+      squares[pawn] = './images/pawnWhite.png';
+    }
+
+    squares[0] = './images/rookBlack.png';
+    squares[7] = './images/rookBlack.png';
+
+    squares[56] = './images/rookWhite.png';
+    squares[63] = './images/rookWhite.png';
+
+    squares[1] = './images/bishopBlack.png';
+    squares[6] = './images/bishopBlack.png';
+
+    squares[57] = './images/bishopWhite.png';
+    squares[62] = './images/bishopWhite.png';
+
+    squares[2] = './images/knightBlack.png';
+    squares[5] = './images/knightBlack.png';
+
+    squares[58] = './images/knightWhite.png';
+    squares[61] = './images/knightWhite.png';
+
+    squares[3] = './images/QueenBlack.png';
+    squares[60] = './images/QueenWhite.png';
+
+    squares[4] = './images/kingBlack.png';
+    squares[59] = './images/kingWhite.png';
+
+    this.setState({history: [{squares}]})
   }
 
   handleClick(i) {
