@@ -12,19 +12,19 @@ function Square(props) {
 class Board extends React.Component {
   renderSquare(i) {
     return (<Square
-      value={this.props.squares[i]}
-      onClick={() => this.props.onClick(i)}
+      value = {this.props.squares[i]}
+      onClick = {() => this.props.onClick(i)}
     />);
   }
 
   print8Squares(i) {
-    var arr = Array(i, i+1, i+2, i+3, i+4, i+5, i+6, i+7)
+    var arr = Array(i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7)
     return arr.map((x) => this.renderSquare(x))
   }
 
   printBoard() {
-    var arr = Array(0,8,16,24,32,40,48,56);
-    return arr.map((x) =>  <div className="board-row">{this.print8Squares(x)}</div>);
+    var arr = Array(0, 8, 16, 24, 32, 40, 48, 56);
+    return arr.map((x) => <div className="board-row">{this.print8Squares(x)}</div>);
   }
 
   render() {
@@ -41,21 +41,21 @@ class Game extends React.Component {
     super(props);
     var squares = Array(64).fill(null)
     var boer;
-    for (boer=8; boer<16; boer++) {
+    for (boer = 8; boer < 16; boer++) {
       squares[boer] = 'B';
     }
-    for (boer=48; boer<56; boer++) {
+    for (boer = 48; boer < 56; boer++) {
       squares[boer] = 'B';
     }
 
     var towerPosition = Array(0, 7, 56, 63)
-    towerPosition.map((t) => squares[t]='T');
+    towerPosition.map((t) => squares[t] = 'T');
 
     var loperPosition = Array(1, 6, 57, 62)
-    loperPosition.map((t) => squares[t]='H');
+    loperPosition.map((t) => squares[t] = 'H');
 
     var horsePosition = Array(2, 5, 58, 61)
-    horsePosition.map((t) => squares[t]='L');
+    horsePosition.map((t) => squares[t] = 'L');
 
     squares[3] = 'D';
     squares[60] = 'D';
@@ -78,25 +78,25 @@ class Game extends React.Component {
     const current = history[history.length - 1]
 
     if (this.state.selectedFigure) {
-    const squares = [...current.squares]; 
-    if (squares[i]) {
-      return;
+      const squares = [...current.squares];
+      if (squares[i]) {
+        return;
+      }
+      squares[i] = this.state.selectedFigure;
+      squares[this.state.selectedPosition] = null;
+      this.setState({
+        history: history.concat([{ squares: squares, }]),
+        xIsNext: !this.state.xIsNext,
+        stepNumber: history.length,
+        selectedPosition: null,
+        selectedFigure: null,
+      });
+    } else {
+      this.setState({
+        selectedPosition: i,
+        selectedFigure: current.squares[i],
+      })
     }
-    squares[i] = this.state.selectedFigure;
-    squares[this.state.selectedPosition] = null;
-    this.setState({
-      history: history.concat([{ squares: squares, }]),
-      xIsNext: !this.state.xIsNext,
-      stepNumber: history.length,
-      selectedPosition: null,
-      selectedFigure: null,
-    });
-  } else {
-    this.setState({
-      selectedPosition: i,
-      selectedFigure: current.squares[i],
-    })
-  }
 
   }
 
