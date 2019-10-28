@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
-      {props.value}
+      <img src={props.value} width='100%' />
     </button>
   );
 }
@@ -60,8 +60,8 @@ class Game extends React.Component {
     squares[3] = 'D';
     squares[60] = 'D';
 
-    squares[4] = 'K';
-    squares[59] = 'K';
+    squares[4] = './images/kingWhite.png';
+    squares[59] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chess_klt45.svg/1920px-Chess_klt45.svg.png';
 
     this.state = {
       history: [{ squares }],
