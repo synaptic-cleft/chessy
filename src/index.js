@@ -40,12 +40,12 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     const squares = Array(64).fill(null)
-    let boer;
-    for (boer = 8; boer < 16; boer++) {
-      squares[boer] = './images/pawnBlack.png';
+    let pawn;
+    for (pawn = 8; pawn < 16; pawn++) {
+      squares[pawn] = './images/pawnBlack.png';
     }
-    for (boer = 48; boer < 56; boer++) {
-      squares[boer] = './images/pawnWhite.png';
+    for (pawn = 48; pawn < 56; pawn++) {
+      squares[pawn] = './images/pawnWhite.png';
     }
 
     const blackRookPosition = Array(0, 7)
