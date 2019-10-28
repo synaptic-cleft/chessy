@@ -22,33 +22,15 @@ class Board extends React.Component {
     return arr.map((x) => this.renderSquare(x))
   }
 
+  printBoard() {
+    var arr = Array(0,8,16,24,32,40,48,56);
+    return arr.map((x) =>  <div className="board-row">{this.print8Squares(x)}</div>);
+  }
+
   render() {
     return (
       <div>
-        <div className="board-row">
-          {this.print8Squares(0)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(8)}          
-        </div>
-        <div className="board-row">
-        {this.print8Squares(16)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(24)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(32)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(40)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(48)}
-        </div>
-        <div className="board-row">
-        {this.print8Squares(56)}
-        </div>
+        {this.printBoard()}
       </div>
     );
   }
