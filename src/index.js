@@ -1,40 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      <img src={props.value} width='100%' />
-    </button>
-  );
-}
-class Board extends React.Component {
-  renderSquare(i) {
-    return (<Square
-      value = {this.props.squares[i]}
-      onClick = {() => this.props.onClick(i)}
-    />);
-  }
-
-  print8Squares(i) {
-    const arr = Array(i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7)
-    return arr.map((x) => this.renderSquare(x))
-  }
-
-  printBoard() {
-    const arr = Array(0, 8, 16, 24, 32, 40, 48, 56);
-    return arr.map((x) => <div className="board-row">{this.print8Squares(x)}</div>);
-  }
-
-  render() {
-    return (
-      <div>
-        {this.printBoard()}
-      </div>
-    );
-  }
-}
+import Board from './Board';
 
 class Game extends React.Component {
   constructor(props) {
@@ -84,7 +51,7 @@ class Game extends React.Component {
     squares[4] = './images/kingBlack.png';
     squares[59] = './images/kingWhite.png';
 
-    this.setState({history: [{squares}]})
+    this.setState({ history: [{ squares }] })
   }
 
   handleClick(i) {
@@ -121,23 +88,23 @@ class Game extends React.Component {
       xIsNext: (step % 2) === 0,
     });
   }
+
+  linksToPreviousSteps = history => history.map((step, move) => {
+    const desc = move ?
+      'Go to move # ' + move :
+      'Go to game start';
+    return (
+      <li key={move}>
+        <button onClick={() => this.jumpTo(move)}>{desc}</button>
+      </li>
+    )
+  })
+
   render() {
     const history = this.state.history
     const current = history[this.state.stepNumber]
 
-    const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move # ' + move :
-        'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      )
-
-    }
-    )
-    let status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    let status = 'Next player: ' + (this.state.xIsNext ? 'White' : 'Black');
 
     return (
       <div className="game">
@@ -149,7 +116,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol>{this.linksToPreviousSteps(history)}</ol>
         </div>
       </div>
     );
