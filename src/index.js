@@ -33,23 +33,23 @@ class Game extends React.Component {
     squares[56] = './images/rookWhite.png';
     squares[63] = './images/rookWhite.png';
 
-    squares[1] = './images/bishopBlack.png';
-    squares[6] = './images/bishopBlack.png';
+    squares[1] = './images/knightBlack.png';
+    squares[6] = './images/knightBlack.png';
 
-    squares[57] = './images/bishopWhite.png';
-    squares[62] = './images/bishopWhite.png';
+    squares[57] = './images/knightWhite.png';
+    squares[62] = './images/knightWhite.png';
 
-    squares[2] = './images/knightBlack.png';
-    squares[5] = './images/knightBlack.png';
+    squares[2] = './images/bishopBlack.png';
+    squares[5] = './images/bishopBlack.png';
 
-    squares[58] = './images/knightWhite.png';
-    squares[61] = './images/knightWhite.png';
+    squares[58] = './images/bishopWhite.png';
+    squares[61] = './images/bishopWhite.png';
 
-    squares[3] = './images/QueenBlack.png';
-    squares[60] = './images/QueenWhite.png';
+    squares[4] = './images/QueenBlack.png';
+    squares[59] = './images/QueenWhite.png';
 
-    squares[4] = './images/kingBlack.png';
-    squares[59] = './images/kingWhite.png';
+    squares[3] = './images/kingBlack.png';
+    squares[60] = './images/kingWhite.png';
 
     this.setState({ history: [{ squares }] })
   }
